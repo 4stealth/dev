@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 server=http://kartolo.sby.datautama.net.id/parrot
 arch=amd64
 local=/home/afrizal/project/root/

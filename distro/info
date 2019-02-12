@@ -1,7 +1,6 @@
-base=parrot
-core=debian
 distro=4stealth
-number=1
+distro_base=parrot
+versi=1
 code_name=revolution
+code_name_base=stable
 arch=amd64
-number_versi=1

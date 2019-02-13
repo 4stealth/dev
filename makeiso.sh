@@ -1,5 +1,5 @@
 #!/bin/env bash
-version_kernel=""
+version_kernel="4.19.0-parrot1-13t-amd64"
 sudo rm -rf dvd/live/initrd.lz
 sudo cp root/boot/initrd.img-$version_kernel-generic dvd/live/initrd.lz
 sudo rm -rf dvd/live/vmlinuz

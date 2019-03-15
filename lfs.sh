@@ -6,3 +6,27 @@ cfdisk
 mkdir /mnt/lfs
 mount -v -t ext4 /dev/sda1 /mnt/lfs
 /sbin/swapon -v /dev/sda2
+mkdir -v /mnt/lfs/sources
+chmod -v a+wt /mnt/lfs/sources
+wget --input-file=wget-list --continue --directory-prefix=/mnt/lfs/sources
+mkdir -v /mnt/lfs/tools
+ln -sv /mnt/lfs/tools /
+groupadd lfs
+useradd -s /bin/bash -g lfs -m -k /dev/null lfs
+passwd lfs
+chown -v lfs /mnt/lfs/tools
+chown -v lfs /mnt/lfs/sources
+su - lfs
+cat > ~/.bash_profile << "EOF"
+exec env -i HOME=$HOME TERM=$TERM PS1='\u:\w\$ ' /bin/bash 
+EOF
+cat > ~/.bashrc << "EOF"
+set +humask 022
+LFS=/mnt/lfs
+LC_ALL=POSIX
+LFS_TGT=$(uname -m)-lfs-linux-gnu
+PATH=/tools/bin:/bin:/usr/bin
+export LFS LC_ALL LFS_TGT PATH
+EOF
+source ~/.bash_profile
+mkdir -v build

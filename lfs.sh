@@ -8,7 +8,9 @@ mount -v -t ext4 /dev/sda1 /mnt/lfs
 /sbin/swapon -v /dev/sda2
 mkdir -v /mnt/lfs/sources
 chmod -v a+wt /mnt/lfs/sources
-wget --input-file=wget-list --continue --directory-prefix=/mnt/lfs/sources
+cd /mnt/lfs/sources
+wget https://repo.blackhat.web.id/base/wget-list.txt
+wget --input-file=wget-list.txt --continue --directory-prefix=/mnt/lfs/sources
 mkdir -v /mnt/lfs/tools
 ln -sv /mnt/lfs/tools /
 groupadd lfs
